@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://l8iv21fkm5ct"]
+
+[ext_resource type="PackedScene" uid="uid://bsmgqiie68adr" path="res://player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://brynwhp1og0w4" path="res://coin.tscn" id="2"]
+[ext_resource type="Script" uid="uid://e3mis2rb7wib" path="res://moving_platform.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://c1h2i3j4k5l6m" path="res://checkpoint.tscn" id="4"]
+
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(3400, 20)
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(400, 50)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(100, 50)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(1200, 50)
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(785.0005, 50)
+
+[node name="Main" type="Node2D" unique_id=2017516935]
+
+[node name="Ground" type="Area2D" parent="." unique_id=939755031]
+position = Vector2(1700, 640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=372456892]
+shape = SubResource("5")
+
+[node name="ColorRect" type="ColorRect" parent="Ground" unique_id=1093355218]
+offset_left = -1700.0
+offset_top = -10.0
+offset_right = 1700.0
+offset_bottom = 10.0
+color = Color(1, 0.2, 0.2, 0.4)
+
+[node name="StartPlatform" type="StaticBody2D" parent="." unique_id=857809893]
+position = Vector2(200, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartPlatform" unique_id=531140448]
+shape = SubResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="StartPlatform" unique_id=1854277594]
+offset_left = -200.0
+offset_top = -25.0
+offset_right = 200.0
+offset_bottom = 25.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="MovingPlatform1" type="AnimatableBody2D" parent="." unique_id=828086609]
+position = Vector2(600, 420)
+script = ExtResource("3")
+move_range = 80.0
+move_speed = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform1" unique_id=862013344]
+shape = SubResource("2")
+
+[node name="ColorRect" type="ColorRect" parent="MovingPlatform1" unique_id=1746745090]
+offset_left = -50.0
+offset_top = -25.0
+offset_right = 50.0
+offset_bottom = 25.0
+color = Color(0.6, 0.4, 0.2, 1)
+
+[node name="MovingPlatform2" type="AnimatableBody2D" parent="." unique_id=1650623695]
+position = Vector2(1000, 400)
+script = ExtResource("3")
+move_axis = 1
+move_range = 60.0
+move_speed = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform2" unique_id=23923881]
+shape = SubResource("2")
+
+[node name="ColorRect" type="ColorRect" parent="MovingPlatform2" unique_id=377668646]
+offset_left = -50.0
+offset_top = -25.0
+offset_right = 50.0
+offset_bottom = 25.0
+color = Color(0.6, 0.4, 0.2, 1)
+
+[node name="MovingPlatform3" type="AnimatableBody2D" parent="." unique_id=1907186008]
+position = Vector2(1400, 420)
+script = ExtResource("3")
+move_range = 80.0
+move_speed = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform3" unique_id=2121682960]
+shape = SubResource("2")
+
+[node name="ColorRect" type="ColorRect" parent="MovingPlatform3" unique_id=1487773986]
+offset_left = -50.0
+offset_top = -25.0
+offset_right = 50.0
+offset_bottom = 25.0
+color = Color(0.6, 0.4, 0.2, 1)
+
+[node name="MidGround" type="StaticBody2D" parent="." unique_id=1018676488]
+position = Vector2(2100, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MidGround" unique_id=898909488]
+shape = SubResource("3")
+
+[node name="ColorRect" type="ColorRect" parent="MidGround" unique_id=1794769103]
+offset_left = -600.0
+offset_top = -25.0
+offset_right = 600.0
+offset_bottom = 25.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="EndGround" type="StaticBody2D" parent="." unique_id=341597678]
+position = Vector2(3050, 424)
+scale = Vector2(0.39999998, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndGround" unique_id=1111021031]
+position = Vector2(-2.5, 0)
+shape = SubResource("4")
+
+[node name="ColorRect" type="ColorRect" parent="EndGround" unique_id=1821634672]
+offset_left = -350.0
+offset_top = -25.0
+offset_right = 350.0
+offset_bottom = 25.0
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Checkpoint1" parent="." unique_id=1998972723 instance=ExtResource("4")]
+position = Vector2(100, 460)
+checkpoint_id = 1
+
+[node name="Checkpoint2" parent="." unique_id=1563831777 instance=ExtResource("4")]
+position = Vector2(1700, 456)
+checkpoint_id = 2
+
+[node name="Checkpoint3" parent="." unique_id=134367837 instance=ExtResource("4")]
+position = Vector2(3057, 375)
+checkpoint_id = 3
+
+[node name="Coin1" parent="." unique_id=361297178 instance=ExtResource("2")]
+position = Vector2(200, 470)
+
+[node name="Coin2" parent="." unique_id=1956909192 instance=ExtResource("2")]
+position = Vector2(600, 390)
+
+[node name="Coin3" parent="." unique_id=1506374321 instance=ExtResource("2")]
+position = Vector2(1000, 370)
+
+[node name="Coin4" parent="." unique_id=919451723 instance=ExtResource("2")]
+position = Vector2(2100, 470)
+
+[node name="Coin5" parent="." unique_id=1038081492 instance=ExtResource("2")]
+position = Vector2(3100, 340)
+
+[node name="Player" parent="." unique_id=711383276 instance=ExtResource("1")]
+position = Vector2(100, 475)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=291096137]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=563951152]
+offset_left = 20.0
+offset_top = 20.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "Score: 0"
+
+[connection signal="body_entered" from="Ground" to="Player" method="respawn"]
+[connection signal="coin_collected" from="Coin1" to="Player" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coin2" to="Player" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coin3" to="Player" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coin4" to="Player" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coin5" to="Player" method="_on_coin_collected"]
